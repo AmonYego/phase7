@@ -6,7 +6,7 @@ from streamlit import spinner
 
 st.set_page_config(page_title="ClassRoom AI", page_icon="🎓")
 st.markdown("""
-<div style='display: flex; justify-content: space-between; align-items: center; padding-top: 30px; color: gray; font-size: 14px;'>
+<div style='display: flex; justify-content: space-between; align-items: center; padding-top: 30px; color: blue; font-size: 20px;'>
     <div style='text-align: left;'><b>©Yego Senior</b></div>
     <div style='text-align: center;'><b>🏆Helping you drive good grades home🎓.</b></div>
     <div style='text-align: right;'><b>©ClassRoom AI🎓</b></div>
@@ -14,7 +14,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 
-st.markdown("<h1 style='text-align: center; color: #2E86C1;'>ClassRoom AI🎓</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center; color: blue;'>ClassRoom AI🎓</h1>", unsafe_allow_html=True)
 
 st.markdown("<h3 style='text-align: center;'>Ace your exams — Revise Like a Pro with AI</h3>", unsafe_allow_html=True)
 
@@ -31,42 +31,70 @@ level = st.selectbox(
 def get_level_prompt(level):
     if "Lower Primary" in level:
         return """
-        The learner is in LOWER PRIMARY (Grade 1-5 in Kenyan CBC).
-        ✅ Use VERY SIMPLE English or Kiswahili-friendly explanations.
-        ✅ Explain like teaching a young child.
-        ✅ Use fun and relatable examples: toys, food, animals, school games, cartoons, family.
-        ✅ Use very short sentences and a friendly, encouraging tone.
-        ✅ Avoid complex terms or deep logic.
+        The learner is in LOWER PRIMARY (Grade 1–5 in Kenyan CBC).
+        ✅ Use VERY SIMPLE English or Kiswahili-friendly language.
+        ✅ Explain like teaching a young child (short, joyful, friendly sentences).
+        ✅ Give fun and relatable examples (toys, animals, food, games, family, cartoons).
+        ✅ Use a playful and encouraging tone (e.g. “Great job! Let’s try another one!”).
+        ✅ Avoid complex terms, abstract ideas, or deep reasoning.
+        ✅ Encourage learning with excitement and imagination.
+        ✅ If explaining a concept:
+            1. Say what it is in 1 easy line.
+            2. Give one playful example.
+            3. Ask a tiny question or give a fun quick activity (optional).
         """
 
     elif "Upper Primary" in level:
         return """
-        The learner is in UPPER PRIMARY (Grade 6-9 in Kenyan CBC).
-        ✅ Use simple English with slightly more structure.
-        ✅ Give relatable examples from school life, hobbies, friends, simple science.
-        ✅ Explain concepts step-by-step with basic logic.
-        ✅ Avoid heavy jargon but introduce mildly academic terms.
-        ✅ Tone should be supportive like a helpful school tutor.
+        The learner is in UPPER PRIMARY (Grade 6–9 in Kenyan CBC).
+        ✅ Use simple English with mild academic structure.
+        ✅ Explain concepts step-by-step with clear logic.
+        ✅ Use relatable examples from school, hobbies, friends, or basic science.
+        ✅ Introduce basic academic terms and define them simply.
+        ✅ Tone should be supportive, like a kind school tutor.
+        ✅ If explaining a concept:
+            1. Give a short definition.
+            2. Explain step-by-step using relatable examples.
+            3. Give one worked-out example.
+            4. Point out one common mistake or misconception.
+            5. Provide a 2-question practice quiz with answers.
+            6. End with one “challenge” question for extra thinking.
         """
 
     elif "High School" in level:
         return """
-        The learner is in HIGH SCHOOL (Grade 10-12 in Kenyan CBC, previously Form 2-4).
-        ✅ Explain concepts clearly as if preparing for KCSE.
-        ✅ Use relatable teenage examples (e.g., sports, daily life, technology, career dreams).
-        ✅ Use moderate academic language but ensure clarity.
-        ✅ Balance simplicity with exam-based depth and reasoning.
+        The learner is in HIGH SCHOOL (Grade 10–12 in Kenyan CBC / KCSE level).
+        ✅ Provide deeper understanding suitable for KCSE revision and critical thinking.
+        ✅ Use more formal academic language and introduce subject terminology (define terms briefly).
+        ✅ Explain logically with cause-effect reasoning or analytical breakdowns.
+        ✅ Include exam-focused insights, marking scheme awareness, and common pitfalls.
+        ✅ Use relatable teenage scenarios (career paths, innovation, social issues, science & tech).
+        ✅ If explaining a concept:
+            1. Provide a clear, exam-ready definition (1–2 lines).
+            2. Break down the concept into 3–4 logical points or processes.
+            3. Give one fully worked example/exercise with reasoning.
+            4. Include an KCSE tip or misconception warning.
+            5. Provide two exam-style practice questions (Standard + Advanced), with marking scheme guidance (steps and marks).
+            6. End with a real-world, industry, or university-level application or why it matters for career growth.
         """
 
     else:  # College/University
         return """
-        The learner is a COLLEGE/UNIVERSITY student (Year 1-5).
-        ✅ Use advanced academic and technical explanations.
-        ✅ Provide structured and logical reasoning.
-        ✅ You may introduce theories, formulas, frameworks, or case studies.
-        ✅ Assume some level of critical thinking and curiosity.
-        ✅ Tone can be professional but still clear.
+        The learner is a COLLEGE/UNIVERSITY student (Year 1–5 or equivalent).
+        ✅ Use advanced academic and technical language where appropriate.
+        ✅ Provide structured and logically coherent explanations.
+        ✅ Reference theories, frameworks, formulas, research insights, or case studies.
+        ✅ Encourage critical thinking, comparison, and problem-solving.
+        ✅ Tone should be professional yet clear and conceptually rich.
+        ✅ If explaining a topic:
+            1. Begin with a concise abstract/overview.
+            2. Provide a detailed conceptual explanation with logical sectioning.
+            3. Introduce formulas, models, or theoretical frameworks where relevant.
+            4. Include a real-world or industry case study or application.
+            5. Offer a solved advanced problem or scenario.
+            6. Suggest further exploration or extension questions for deeper learning.
         """
+
 
 if level=="-- Select Level --":
     st.warning("Please select your education level to proceed!")
@@ -276,7 +304,7 @@ elif mode == "💬 Ask AI a Question":
             st.success(answer)
         else:
             st.warning("Please enter a question first.")
-elif mode == "💬 Ask AI a Question" and level=="-- Select Level --":
+elif mode == "Mark My Answers" and level=="-- Select Level --":
     st.warning("Please select your education level to proceed!")
 
 elif mode=="Mark My Answers":
