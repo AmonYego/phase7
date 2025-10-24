@@ -6,7 +6,7 @@ from streamlit import spinner
 
 st.set_page_config(page_title="ClassRoom AI", page_icon="🎓")
 st.markdown("""
-<div style='display: flex; justify-content: space-between; align-items: center; padding-top: 30px; color: blue; font-size: 20px;'>
+<div style='display: flex; justify-content: space-between; align-items: center; padding-top: 30px; color: blue; font-size: 15px;'>
     <div style='text-align: left;'><b>©Yego Senior</b></div>
     <div style='text-align: center;'><b>🏆Helping you drive good grades home🎓.</b></div>
     <div style='text-align: right;'><b>©ClassRoom AI🎓</b></div>
